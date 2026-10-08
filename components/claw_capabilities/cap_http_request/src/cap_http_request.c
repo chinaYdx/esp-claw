@@ -587,7 +587,11 @@ static esp_err_t cap_http_request_execute(const char *input_json,
     config.user_data = &buf;
     config.timeout_ms = timeout_ms;
     config.buffer_size = 4096;
+#if CONFIG_APP_CLAW_PETTI
+    config.use_global_ca_store = true;
+#else
     config.crt_bundle_attach = esp_crt_bundle_attach;
+#endif
     config.disable_auto_redirect = true;
 
     client = esp_http_client_init(&config);

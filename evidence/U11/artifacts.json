@@ -1,0 +1,30 @@
+{
+  "ai-host-screen-final.log": {
+    "bytes": 140,
+    "sha256": "df64ffed3dc683b1b6e652ada3baf5f6b3debc5ff1e2d508bdb6211fb5e6787d"
+  },
+  "mutations.log": {
+    "bytes": 107,
+    "sha256": "9ca97820820a02b55b13f401f5629674aef6688ec630fbfd73d5962a297b8e99"
+  },
+  "nvs-config-test.log": {
+    "bytes": 134,
+    "sha256": "8dfbc4aff50da1e0a8fa24089eabcdfd8c92af4d92b338aed3f545744e3fee56"
+  },
+  "report.md": {
+    "bytes": 1135,
+    "sha256": "0bc8a97d667643cd4227bb37cc41bde9eefed948c0dbf031743efbbb35e5d0f2"
+  },
+  "source-hashes.json": {
+    "bytes": 1530,
+    "sha256": "05514f8f223774f9a1600bf2981cda05a28dd648a83b1fa0435deaf5622e66e4"
+  },
+  "storage-directory-mock.log": {
+    "bytes": 156,
+    "sha256": "fe66268fc9a46ab1cd96a98b21572854e5b48ae4e4def238c021e5aa810eaf26"
+  },
+  "tls-host-final.log": {
+    "bytes": 114,
+    "sha256": "f07eacd16e4031fc002528d2d7cf38b48b552ede6aa9b70a2c9523ec55ed7fef"
+  }
+}

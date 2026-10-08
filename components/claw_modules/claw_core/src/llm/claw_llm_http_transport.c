@@ -222,39 +222,9 @@ static const char *auth_header_name(const char *auth_type)
 
 static char *parse_error_message_body(const char *body, int status)
 {
-    cJSON *root;
-    cJSON *error;
-    cJSON *message;
-    char *fallback;
-
-    if (!body || !body[0]) {
-        return dup_printf("HTTP %d", status);
-    }
-
-    root = cJSON_Parse(body);
-    if (!root) {
-        return dup_printf("HTTP %d: %.160s", status, body);
-    }
-
-    error = cJSON_GetObjectItem(root, "error");
-    if (error && cJSON_IsObject(error)) {
-        message = cJSON_GetObjectItem(error, "message");
-        if (message && cJSON_IsString(message) && message->valuestring[0]) {
-            fallback = dup_printf("HTTP %d: %s", status, message->valuestring);
-            cJSON_Delete(root);
-            return fallback;
-        }
-    }
-
-    message = cJSON_GetObjectItem(root, "message");
-    if (message && cJSON_IsString(message) && message->valuestring[0]) {
-        fallback = dup_printf("HTTP %d: %s", status, message->valuestring);
-        cJSON_Delete(root);
-        return fallback;
-    }
-
-    cJSON_Delete(root);
-    return dup_printf("HTTP %d: %.160s", status, body);
+    /* Remote errors can echo request credentials. Persist/log only status. */
+    (void)body;
+    return dup_printf("LLM HTTP status=%d", status);
 }
 
 esp_err_t claw_llm_http_post_json(const claw_llm_http_json_request_t *request,
@@ -302,7 +272,11 @@ esp_err_t claw_llm_http_post_json(const claw_llm_http_json_request_t *request,
     config.timeout_ms = request->timeout_ms;
     config.buffer_size = 4096;
     config.buffer_size_tx = 4096;
+#if CONFIG_APP_CLAW_PETTI
+    config.use_global_ca_store = true;
+#else
     config.crt_bundle_attach = esp_crt_bundle_attach;
+#endif
 #ifdef CONFIG_HTTP_REUSE_ENABLE
     config.keep_alive_enable = true;
 #endif

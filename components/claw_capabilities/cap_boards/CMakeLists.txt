@@ -1,6 +1,10 @@
 idf_component_register()
 
-set(CAP_BOARDS_SKILLS_DIR "${COMPONENT_DIR}/skills")
+if(PETTI_BOARD_SKILLS_DIR)
+    set(CAP_BOARDS_SKILLS_DIR "${PETTI_BOARD_SKILLS_DIR}")
+else()
+    set(CAP_BOARDS_SKILLS_DIR "${COMPONENT_DIR}/skills")
+endif()
 set(CAP_BOARDS_GENERATOR "${COMPONENT_DIR}/tools/generate_board_skill.py")
 set(CAP_BOARDS_METADATA_YAML "${CMAKE_SOURCE_DIR}/components/gen_bmgr_codes/gen_board_metadata.yaml")
 set(CAP_BOARDS_OUTPUT_MD "${CAP_BOARDS_SKILLS_DIR}/board_hardware_info/SKILL.md")

@@ -1,4 +1,8 @@
 menu "App Claw Config"
+    config APP_CLAW_PETTI
+        bool "Petti platform-owned network, TLS and secret policy"
+        default n
+
 
     config APP_CLAW_ENABLE_CLI
         bool "Enable App Claw CLI"

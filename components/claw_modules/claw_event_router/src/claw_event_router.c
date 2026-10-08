@@ -1957,6 +1957,10 @@ static esp_err_t claw_event_router_execute_script_action(
     cJSON *ctx,
     claw_event_router_result_t *result)
 {
+#if !CONFIG_APP_CLAW_CAP_LUA
+    (void)rule; (void)action; (void)event; (void)ctx; (void)result;
+    return ESP_ERR_NOT_SUPPORTED;
+#else
     claw_event_router_action_t local = *action;
     char cap_name[CLAW_EVENT_ROUTER_cap_SIZE];
     cJSON *input_root = cJSON_Parse(action->input_json);
@@ -1976,6 +1980,7 @@ static esp_err_t claw_event_router_execute_script_action(
     strlcpy(local.cap, cap_name, sizeof(local.cap));
     local.kind = CLAW_EVENT_ROUTER_ACTION_CALL_CAP;
     return claw_event_router_execute_cap_action(rule, &local, event, ctx, result);
+#endif
 }
 
 static esp_err_t claw_event_router_execute_emit_event_action(

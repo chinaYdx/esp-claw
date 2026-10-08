@@ -236,7 +236,11 @@ static esp_err_t cap_web_search_brave_direct(const char *url, cap_web_search_buf
         .user_data = buf,
         .timeout_ms = 15000,
         .buffer_size = 4096,
+#if CONFIG_APP_CLAW_PETTI
+        .use_global_ca_store = true,
+#else
         .crt_bundle_attach = esp_crt_bundle_attach,
+#endif
 #ifdef CONFIG_HTTP_REUSE_ENABLE
         .keep_alive_enable = true,
 #endif
@@ -275,7 +279,11 @@ static esp_err_t cap_web_search_tavily_direct(const char *query, cap_web_search_
         .user_data = buf,
         .timeout_ms = 15000,
         .buffer_size = 4096,
+#if CONFIG_APP_CLAW_PETTI
+        .use_global_ca_store = true,
+#else
         .crt_bundle_attach = esp_crt_bundle_attach,
+#endif
 #ifdef CONFIG_HTTP_REUSE_ENABLE
         .keep_alive_enable = true,
 #endif

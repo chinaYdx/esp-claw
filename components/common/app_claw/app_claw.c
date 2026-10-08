@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 #include "app_claw.h"
+#include "app_claw_llm_policy.h"
 #include "app_claw_cli.h"
 #include "app_capabilities.h"
 #if CONFIG_APP_CLAW_SYSTEM_UI_ENABLE
@@ -404,6 +405,12 @@ static esp_err_t app_claw_ensure_config_lock(void)
 static esp_err_t app_claw_store_current_config(const app_claw_config_t *config)
 {
     ESP_RETURN_ON_FALSE(config, ESP_ERR_INVALID_ARG, TAG, "config is NULL");
+#if CONFIG_APP_CLAW_PETTI
+    if (!app_claw_llm_policy_valid(config->llm_base_url, sizeof(config->llm_base_url),
+                                   config->llm_model, sizeof(config->llm_model),
+                                   config->llm_api_key, sizeof(config->llm_api_key)))
+        return ESP_ERR_INVALID_ARG;
+#endif
     ESP_RETURN_ON_ERROR(app_claw_ensure_config_lock(), TAG, "config lock unavailable");
 
     xSemaphoreTake(s_config_lock, portMAX_DELAY);
@@ -873,6 +880,12 @@ esp_err_t app_claw_apply_config(const app_claw_config_t *config)
     if (!config) {
         return ESP_ERR_INVALID_ARG;
     }
+#if CONFIG_APP_CLAW_PETTI
+    if (!app_claw_llm_policy_valid(config->llm_base_url, sizeof(config->llm_base_url),
+                                   config->llm_model, sizeof(config->llm_model),
+                                   config->llm_api_key, sizeof(config->llm_api_key)))
+        return ESP_ERR_INVALID_ARG;
+#endif
     ESP_RETURN_ON_ERROR(app_claw_ensure_config_lock(), TAG, "config lock unavailable");
 
     xSemaphoreTake(s_config_lock, portMAX_DELAY);

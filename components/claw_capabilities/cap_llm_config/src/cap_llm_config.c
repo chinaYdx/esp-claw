@@ -220,21 +220,7 @@ static const cap_llm_preset_t *find_preset(const char *id)
 
 static void mask_token(const char *token, char *out, size_t out_size)
 {
-    size_t len;
-
-    if (!out || out_size == 0) {
-        return;
-    }
-    if (!token || !token[0]) {
-        strlcpy(out, "(missing)", out_size);
-        return;
-    }
-    len = strlen(token);
-    if (len <= 8) {
-        strlcpy(out, "configured", out_size);
-        return;
-    }
-    snprintf(out, out_size, "%.4s...%s", token, token + len - 4);
+    if (out && out_size) strlcpy(out, token && token[0] ? "configured" : "(missing)", out_size);
 }
 
 static void apply_preset(cap_llm_config_t *config, const cap_llm_preset_t *preset)

@@ -1,0 +1,14 @@
+{
+  "components/claw_capabilities/cap_boards/CMakeLists.txt": "ee8169a0537cb9ba9094cab910d720af9ac4ca9c58930775d9fdc4933e436103",
+  "components/claw_capabilities/cap_http_request/src/cap_http_request.c": "742332d0cd5fae530e2cc1e8734f7333218401d3c9f4439c4f7674f9d6717439",
+  "components/claw_capabilities/cap_llm_config/src/cap_llm_config.c": "d5a0bae715d9ea7e0796ef4087068f551dd8559116a6ee1492be36c2f4691d28",
+  "components/claw_capabilities/cap_web_search/src/cap_web_search.c": "727545fa6137ef8f095f6faf0427e970169ec8ae68c5d8404a586503f1c47e0d",
+  "components/claw_modules/claw_core/src/llm/claw_llm_http_transport.c": "85df259cf41f36c8b97372f341f58d4b2f713d9376c2bd9e7179b65dccc2f6aa",
+  "components/claw_modules/claw_event_router/src/claw_event_router.c": "ae8eadbd0110d189e55c472a1c28d96281df9abfb4e6944f0442720a2e082102",
+  "components/common/app_claw/CMakeLists.txt": "e2cf1212830714d332bd95b76b47a308969f8ee2dab6b9b7d30e65824cf504a6",
+  "components/common/app_claw/Kconfig": "3f64de90f0a8a9fa83b0964c0647611debf1540941fac9403cd1c3988dd93bdf",
+  "components/common/app_claw/app_capabilities.c": "b7d13e32426b99ee9829f289d75eaf1366df9ae71e777874ad13cb56dd432460",
+  "components/common/app_claw/app_claw.c": "a9e69126e3fc471a4bbdcfb325de4823348cf10accf325d74befe8a6eb1a0094",
+  "components/common/app_claw/idf_component.yml": "0ad292475fc729d32cb2db84070c31190b64e45326565db9cd4bfd5c0a9ee1fa",
+  "components/common/app_claw/include/app_claw_llm_policy.h": "2ad80213131f2d1faada683b24fc1fdc5c18b42a673c3006777cb093efc76a82"
+}

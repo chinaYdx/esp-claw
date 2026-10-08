@@ -5,7 +5,9 @@
  */
 #include "app_capabilities.h"
 
+#if CONFIG_APP_CLAW_CAP_LUA
 #include "app_lua_modules.h"
+#endif
 
 #include <ctype.h>
 #include <stdlib.h>
@@ -567,7 +569,7 @@ static esp_err_t app_cap_prepare_im_local(const app_claw_config_t *config,
     (void)paths;
     return cap_im_local_set_config(&(cap_im_local_config_t) {
         .default_sender_id = "web_user",
-        .log_outbound_messages = true,
+        .log_outbound_messages = false,
     });
 }
 
