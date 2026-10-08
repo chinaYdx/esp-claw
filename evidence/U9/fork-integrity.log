@@ -1,0 +1,10 @@
+origin=https://github.com/espressif/esp-claw.git
+branch=petti
+base=74b18700a1d6c40de472bfc71c19e49356ca1cc0
+shallow=false
+partial/promisor=none
+base_history_commits=759
+all_history_commits=1187
+all_objects=28825
+git_fsck_full_exit=0
+license_sha256=3ddf9be5c28fe27dad143a5dc76eea25222ad1dd68934a047064e56ed2fa40c5

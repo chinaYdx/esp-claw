@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\boards\\petti\\petti_mosaico", "C:\\code\\esp32\\petti-ui\\host\\hardware_policy_test.c", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\reset_adopted_rail.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\reset_adopted_rail.exe"]
+Assertion failed: petti_hw_adopt_level(true,level,off)==level, file C:\code\esp32\petti-ui\host\hardware_policy_test.c, line 13
+
+exit_code=3221226505

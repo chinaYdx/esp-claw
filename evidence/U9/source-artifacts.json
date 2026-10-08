@@ -1,0 +1,433 @@
+{
+  "sources": [
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/CMakeLists.txt",
+      "bytes": 282,
+      "sha256": "25c8163d208b17e82b3500ebf7e673d541e4aaa00a5cb1c1a3b2f68e314d90c2"
+    },
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/idf_component.yml",
+      "bytes": 315,
+      "sha256": "c3420c72efd7b909daca5aba3fa278d250e6094f1e8358bd0f118953dec51ea1"
+    },
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/include/claw_petti_drivers.h",
+      "bytes": 2652,
+      "sha256": "2619ac8a298d76a948c1bdf507fab11208ae257ebd3bcb16cdd98357a7d663b0"
+    },
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/include/claw_petti_math.h",
+      "bytes": 1272,
+      "sha256": "f55aab5a4333da8247d3880a454fb7d9a1adf601cafe76f356fa565179694a0a"
+    },
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/petti_audio.c",
+      "bytes": 4515,
+      "sha256": "1acdbb76f4ce02feb75465313cdbf661ca6bf9dc3b8fafe092987d93a9f7a071"
+    },
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/petti_battery.c",
+      "bytes": 3062,
+      "sha256": "95212d9b7cb739af6e6dd8a98d6615db28eea80f6700c6ac3382daee5fb9231d"
+    },
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/petti_nand.c",
+      "bytes": 5977,
+      "sha256": "ff02a1b3f946207b6cb1beb4d4e055374b92c611812ab38257654491db0e5fac"
+    },
+    {
+      "path": "C:/code/esp32/esp-claw/components/petti_drivers/petti_sensors.c",
+      "bytes": 6740,
+      "sha256": "49d9759b5098124fbf60b5d0976f31b0ef62134de59401c64dffc0e45a3a6aa0"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/board_devices.yaml",
+      "bytes": 5256,
+      "sha256": "aa1ead6ea422e9e7b90b6bd30e9ba52d43e501a61825fc938ff59b9e12c8f3f3"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/board_info.yaml",
+      "bytes": 128,
+      "sha256": "f689b6c039a2c60b86e2b7c588e5cc95577c99e8e51e99c3cb8427ebecb4754e"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/board_peripherals.yaml",
+      "bytes": 1376,
+      "sha256": "202da28af439d216ae915b0d37d51ce8b1981ddc057356b5ed49e69c5e8f3c30"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/petti_board.h",
+      "bytes": 325,
+      "sha256": "d226cc7686d33b9244f8ba894483864688b393ab4d0b43bbeecab8756876f047"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/petti_hw_policy.c",
+      "bytes": 724,
+      "sha256": "db5eb5282fd8413013cb441e4ec0de2fc31cbb6f1ff0afe4f01445305247a9b8"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/petti_hw_policy.h",
+      "bytes": 329,
+      "sha256": "8e9bd10c5fdb636d42b75c79d89f980e8a9c784b05a0be8b4710d961c6e424f4"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/setup_device.c",
+      "bytes": 18856,
+      "sha256": "375cbdb1dbedbc72dfcd101ba0baf087eec494dc55d77d4d2defada988e9a5c9"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/CMakeLists.txt",
+      "bytes": 478,
+      "sha256": "6336631b4e835476ba15efc3790f985e633594110572a77c896bbfd83752a362"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/board_manager.defaults",
+      "bytes": 718,
+      "sha256": "c0dfe1baf102194ca125370a54e6cd6a0a4e7dd2c86c08f10ce435a1a01d3dbb"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/CMakeLists.txt",
+      "bytes": 493,
+      "sha256": "e2bdf61efca9007abaffab3d160a4ec4c81db92abb23650c47605be9593854e8"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_device_config.c",
+      "bytes": 14380,
+      "sha256": "12c1c094bb8c1b084b92d16fcc28d4ff8e2c219a750ccd7e02ccbe1945ac37fd"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_device_custom.h",
+      "bytes": 4864,
+      "sha256": "403e612f129ff7620c46f0e3618b412aaef140059083638252f7cd9ef36b1c01"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_device_handles.c",
+      "bytes": 4043,
+      "sha256": "f2b9ff51e597a51c455a1edd8abb5b55b946d4be0b559d64fc929a14da6923db"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_info.c",
+      "bytes": 544,
+      "sha256": "0fb4e0176d861a75d5b6c3e30b5235bd990c304671f3b9bfdb9e03f6cac71fba"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_metadata.yaml",
+      "bytes": 3045,
+      "sha256": "b039bf4a99a32d1072a9fc3f8e76f2f2e8c45f98b135f168002cbc9e522a937f"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_periph_config.c",
+      "bytes": 6742,
+      "sha256": "dc6eec440c4f2c6421a44cff53399f9556169b8becbb9fc854fad12852807111"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_periph_handles.c",
+      "bytes": 1320,
+      "sha256": "2d3272c1134e0a837af9b0afe360de51935037b99f665579fd0941388a41496a"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/idf_component.yml",
+      "bytes": 162,
+      "sha256": "5c8bba85a1aaa85630f3731ebdfe94d3e95a844b9647fb76f1f0c59d4311ee23"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/Kconfig.projbuild",
+      "bytes": 200,
+      "sha256": "87070051973124ba1662aedc04f4abab7e427f8cfca4c71d82c5f1d7c5972cca"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/petti_apphost/CMakeLists.txt",
+      "bytes": 481,
+      "sha256": "c7f6c5a977b2916a26abc3339010b64cf21e7c16f2c8eddcfb394c68a14100cc"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/petti_apphost/resources.h",
+      "bytes": 1652,
+      "sha256": "b3ce3cfc1dc7f9452ba9956ef8298653dea45d62d062fe838edf8531a89a1581"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/petti_apphost/resources_backend.c",
+      "bytes": 2554,
+      "sha256": "4f5bd94c4d0fbc98708d3c5c882759ed021bc2c3dfa067599805b43840970d03"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/petti_platform/CMakeLists.txt",
+      "bytes": 168,
+      "sha256": "d01b368a6f4e38b2757326c941c4694a66126427e463e41ff23db9a1c8026308"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/petti_platform/idf_component.yml",
+      "bytes": 224,
+      "sha256": "7131ef3f97dd6b52bd3c8a75832f64abd19b52fe59fd4c3d2069861ad0787ab1"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/petti_platform/include/petti_platform.h",
+      "bytes": 1663,
+      "sha256": "fb31804f0cf4f16704c2df1ddacad55dcd8af1f41c08d90269286fc57e9d55bd"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/components/petti_platform/petti_platform_hw.c",
+      "bytes": 9176,
+      "sha256": "53be0f4d1c27509cfc8c7aba5b539dcb78bfa96c3743664119946238fcd67994"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/dependencies.lock",
+      "bytes": 14585,
+      "sha256": "231f114aab0a967159d342c8f534be1b5c4db913c1b4d2212800954a02b0e294"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/docs/design-differences.md",
+      "bytes": 2770,
+      "sha256": "adbb6ed6a946ac702139e795aee5ee662e502b3d36e27c81debe296183296001"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/docs/hardware-layer.md",
+      "bytes": 14177,
+      "sha256": "c4bb69aba63a036d4b818e1e18c6052d35989cc071c2a27be27fbfc6879123c7"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/docs/petti-ui-bridge.md",
+      "bytes": 10124,
+      "sha256": "bbd54798b235fd12e589b1baec5b7bd626404d42db84dbdce74d05a45a33f560"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/docs/ui-framework.md",
+      "bytes": 2333,
+      "sha256": "bd51005fef69bb2560fdb1c1a479632d6575bac6977603c98eaee1777e2eecc2"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/host/app_names_test.c",
+      "bytes": 10336,
+      "sha256": "61f04553f7e3e54437731b42d4ac508ac50f6312a0ffaf54224748f2368b3641"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/host/CMakeLists.txt",
+      "bytes": 5224,
+      "sha256": "9ca71225a6a6b6ca37b4e8bb6aedb58e042fcc9ac83865ef43b139324f75673c"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/host/driver_math_test.c",
+      "bytes": 1735,
+      "sha256": "b3fa7327f54117c3ebf04d48275f97f271137aaedbc0d388431248214c611742"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/host/hardware_policy_test.c",
+      "bytes": 1413,
+      "sha256": "8fc1ed6d7c33663f3e668f80ac6d0daaabc8a0f711a4b5b8bb375e91b8e336c2"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/main/CMakeLists.txt",
+      "bytes": 702,
+      "sha256": "4856e5e00fbc7d02247fe84df94425dae4ed381393d8aafd8079b22247997420"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/main/home_screen.c",
+      "bytes": 8050,
+      "sha256": "69a0a56215d8adde77cd8b46b7ee495419294bdc8d53b47dc6e2c99e01d20a55"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/main/idf_component.yml",
+      "bytes": 146,
+      "sha256": "c7ef785302ada4bd14dc6fa645602f0941d949166c2aecc891f690c582648232"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/main/main.c",
+      "bytes": 2285,
+      "sha256": "7dc36bb1f62f552d2e571cac306ac81abe4d6caddba0c597f6bde78b7cc719df"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/main/mic_level.c",
+      "bytes": 2840,
+      "sha256": "906d8f842829dba21b5a0ea9fa372ef8666509667565f4745fa591d18ce19f2d"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/main/mic_level.h",
+      "bytes": 670,
+      "sha256": "3c452554700fe45b562846577577636313f9d2bfde188f33578fc509ce36eeb4"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/main/petti_platform.c",
+      "bytes": 2133,
+      "sha256": "b671196320c4186efe5ad505a171cec69425a1c7b8744ecb701fb01eb8a5f31d"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/sdkconfig",
+      "bytes": 134986,
+      "sha256": "eb8100835394e81ea020318b7d29d1eea1e2828228277bf279c5ec041de1d9d5"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/tools/audit-hardware-layer.py",
+      "bytes": 6360,
+      "sha256": "54c72dabde5dfee1354ca41b5dc7cb9ce4b54ebd0a2f6301162c34663e413e4d"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/tools/record-app-build.py",
+      "bytes": 1486,
+      "sha256": "92ec3b39e81ff7b5782de9270bc79a2dcc0fdc56024150f67ecc7006474f9429"
+    },
+    {
+      "path": "C:/code/esp32/petti-ui/tools/test-hardware-policy.py",
+      "bytes": 3666,
+      "sha256": "c8bb7ac59205469d355c5a6bd7ef572bc70ccce73ec8ae680f51c652f9602702"
+    }
+  ],
+  "compiled_changed_sources": [
+    {
+      "source": "C:/code/esp32/esp-claw/components/petti_drivers/petti_sensors.c",
+      "source_sha256": "49d9759b5098124fbf60b5d0976f31b0ef62134de59401c64dffc0e45a3a6aa0",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/petti_drivers/CMakeFiles/__idf_petti_drivers.dir/petti_sensors.c.obj",
+      "object_sha256": "146037fd4da6ba19e869005618da5c88b23b53f9e6fb79f4100c9cf33519b7b2",
+      "source_mtime_ns": 1791447649698690300,
+      "object_mtime_ns": 1791447661436811100
+    },
+    {
+      "source": "C:/code/esp32/esp-claw/components/petti_drivers/petti_audio.c",
+      "source_sha256": "1acdbb76f4ce02feb75465313cdbf661ca6bf9dc3b8fafe092987d93a9f7a071",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/petti_drivers/CMakeFiles/__idf_petti_drivers.dir/petti_audio.c.obj",
+      "object_sha256": "8abb5248087a62d0bda908637b6add50d9b86e2792cc40616d6c682374dd4c40",
+      "source_mtime_ns": 1791447649633609000,
+      "object_mtime_ns": 1791447661294389800
+    },
+    {
+      "source": "C:/code/esp32/esp-claw/components/petti_drivers/petti_battery.c",
+      "source_sha256": "95212d9b7cb739af6e6dd8a98d6615db28eea80f6700c6ac3382daee5fb9231d",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/petti_drivers/CMakeFiles/__idf_petti_drivers.dir/petti_battery.c.obj",
+      "object_sha256": "7477427dae9fa7acc8fddd77b9c2272f0184c1aa245fc7dc9c354b1a619f1c9a",
+      "source_mtime_ns": 1791447844336613600,
+      "object_mtime_ns": 1791447855384976700
+    },
+    {
+      "source": "C:/code/esp32/esp-claw/components/petti_drivers/petti_nand.c",
+      "source_sha256": "ff02a1b3f946207b6cb1beb4d4e055374b92c611812ab38257654491db0e5fac",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/petti_drivers/CMakeFiles/__idf_petti_drivers.dir/petti_nand.c.obj",
+      "object_sha256": "196f4b5a63a9b319743fd6eb4dcd246477489149cc583b9f2a23f56bf6c431d8",
+      "source_mtime_ns": 1791447649678086300,
+      "object_mtime_ns": 1791447661251937800
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_device_config.c",
+      "source_sha256": "12c1c094bb8c1b084b92d16fcc28d4ff8e2c219a750ccd7e02ccbe1945ac37fd",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/gen_bmgr_codes/CMakeFiles/__idf_gen_bmgr_codes.dir/gen_board_device_config.c.obj",
+      "object_sha256": "5aec4ac956af4ff8719c90583d63ca277be3eb5693bd1237c2b93437dba74003",
+      "source_mtime_ns": 1791445696206577200,
+      "object_mtime_ns": 1791445825702120300
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_device_handles.c",
+      "source_sha256": "f2b9ff51e597a51c455a1edd8abb5b55b946d4be0b559d64fc929a14da6923db",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/gen_bmgr_codes/CMakeFiles/__idf_gen_bmgr_codes.dir/gen_board_device_handles.c.obj",
+      "object_sha256": "9c5ade63f2078c7a5071ffb8089edec63ba105e445a8e020c206c695f426a0ac",
+      "source_mtime_ns": 1791445696207697300,
+      "object_mtime_ns": 1791445824118968300
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_info.c",
+      "source_sha256": "0fb4e0176d861a75d5b6c3e30b5235bd990c304671f3b9bfdb9e03f6cac71fba",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/gen_bmgr_codes/CMakeFiles/__idf_gen_bmgr_codes.dir/gen_board_info.c.obj",
+      "object_sha256": "ff17cfcc2bc144ae071d63aab42eb3418b1e04c7b168c55d69b3e62e40f8c7c1",
+      "source_mtime_ns": 1791445696236932400,
+      "object_mtime_ns": 1791445823717164600
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_periph_config.c",
+      "source_sha256": "dc6eec440c4f2c6421a44cff53399f9556169b8becbb9fc854fad12852807111",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/gen_bmgr_codes/CMakeFiles/__idf_gen_bmgr_codes.dir/gen_board_periph_config.c.obj",
+      "object_sha256": "3755ec7c12cb03c867a2cf939f4f27fa9f851cdd0a58cf70002b3307e9224218",
+      "source_mtime_ns": 1791445696081442100,
+      "object_mtime_ns": 1791445825669395100
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/components/gen_bmgr_codes/gen_board_periph_handles.c",
+      "source_sha256": "2d3272c1134e0a837af9b0afe360de51935037b99f665579fd0941388a41496a",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/gen_bmgr_codes/CMakeFiles/__idf_gen_bmgr_codes.dir/gen_board_periph_handles.c.obj",
+      "object_sha256": "b0b239bc506cc81ae283267ac2f0af4dd53e2fe83fbd3cb8f59c7c011118c958",
+      "source_mtime_ns": 1791445696082467900,
+      "object_mtime_ns": 1791445824249188700
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/petti_hw_policy.c",
+      "source_sha256": "db5eb5282fd8413013cb441e4ec0de2fc31cbb6f1ff0afe4f01445305247a9b8",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/gen_bmgr_codes/CMakeFiles/__idf_gen_bmgr_codes.dir/__/__/boards/petti/petti_mosaico/petti_hw_policy.c.obj",
+      "object_sha256": "976719ecd48b0030bb2043b081dec70b6e9932d294609b8b3292b932953ce4d6",
+      "source_mtime_ns": 1791445216586718700,
+      "object_mtime_ns": 1791445823605136600
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/boards/petti/petti_mosaico/setup_device.c",
+      "source_sha256": "375cbdb1dbedbc72dfcd101ba0baf087eec494dc55d77d4d2defada988e9a5c9",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/gen_bmgr_codes/CMakeFiles/__idf_gen_bmgr_codes.dir/__/__/boards/petti/petti_mosaico/setup_device.c.obj",
+      "object_sha256": "4473b7666e9b73c9e8ebd6dccc9f288f51c6b6ece23e0b5bfad7348966598be4",
+      "source_mtime_ns": 1791447649752594800,
+      "object_mtime_ns": 1791447662102094900
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/components/petti_platform/petti_platform_hw.c",
+      "source_sha256": "53be0f4d1c27509cfc8c7aba5b539dcb78bfa96c3743664119946238fcd67994",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/petti_platform/CMakeFiles/__idf_petti_platform.dir/petti_platform_hw.c.obj",
+      "object_sha256": "cebb3f6cdd85aceb82741995ef7495200a4b51cfad5aaf75785d5b672b9463e6",
+      "source_mtime_ns": 1791447649722917000,
+      "object_mtime_ns": 1791447662271485100
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/components/petti_apphost/resources_backend.c",
+      "source_sha256": "4f5bd94c4d0fbc98708d3c5c882759ed021bc2c3dfa067599805b43840970d03",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/petti_apphost/CMakeFiles/__idf_petti_apphost.dir/resources_backend.c.obj",
+      "object_sha256": "3142aba224ff8a334ab723f96ff3da08acd0c9b2170b7d4cab0df1f3c1b7f8fe",
+      "source_mtime_ns": 1791445920115914000,
+      "object_mtime_ns": 1791446433293148800
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/main/main.c",
+      "source_sha256": "7dc36bb1f62f552d2e571cac306ac81abe4d6caddba0c597f6bde78b7cc719df",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj",
+      "object_sha256": "c8e017e7c9ff1dbd80401b5f8282f1cdbb1e5c9ba3ce9f836899af2ecb5538f4",
+      "source_mtime_ns": 1791447208217642800,
+      "object_mtime_ns": 1791447219724021000
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/main/mic_level.c",
+      "source_sha256": "906d8f842829dba21b5a0ea9fa372ef8666509667565f4745fa591d18ce19f2d",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/main/CMakeFiles/__idf_main.dir/mic_level.c.obj",
+      "object_sha256": "06117490977eff631a09bf814b58cba30520f69dd1807f309cb73f5825ecca7b",
+      "source_mtime_ns": 1791447208217642800,
+      "object_mtime_ns": 1791447219385186900
+    },
+    {
+      "source": "C:/code/esp32/petti-ui/main/petti_platform.c",
+      "source_sha256": "b671196320c4186efe5ad505a171cec69425a1c7b8744ecb701fb01eb8a5f31d",
+      "object": "C:/code/esp32/petti-ui/build/esp-idf/main/CMakeFiles/__idf_main.dir/petti_platform.c.obj",
+      "object_sha256": "d5c7a0efe0a9792af756532910d7293d76b8c70fe4551afb70800000ae998676",
+      "source_mtime_ns": 1791445920115914000,
+      "object_mtime_ns": 1791446433726970000
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "build/petti_home_demo.bin",
+      "bytes": 2111728,
+      "sha256": "0761583abbdd4cb1bcea2ea49c708733a3c433932e6b7dcb3ac81411dfe2dcd8"
+    },
+    {
+      "path": "build/petti_home_demo.elf",
+      "bytes": 21473144,
+      "sha256": "ef4b0ee2936e0486e949afe1ae7ff13d8c0782e5680acdd9100c1f340aae243f"
+    },
+    {
+      "path": "evidence/U9/petti_home_demo.bin",
+      "bytes": 2111728,
+      "sha256": "0761583abbdd4cb1bcea2ea49c708733a3c433932e6b7dcb3ac81411dfe2dcd8"
+    },
+    {
+      "path": "build/host/petti_host.exe",
+      "bytes": 2075234,
+      "sha256": "df4d34b14927369785100d72cd9ce93b06f0e84ed54da72eb56badf9d9b00be8"
+    }
+  ],
+  "regression_rounds": {
+    "lifecycle-100.log": 100,
+    "force-100.log": 100,
+    "resources-force-100.log": 100
+  },
+  "protected_tracked_files_unchanged": true,
+  "board_access": false
+}

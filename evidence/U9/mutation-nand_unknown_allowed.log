@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\nand_unknown_allowed", "C:\\code\\esp32\\petti-ui\\host\\driver_math_test.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\nand_unknown_allowed.exe"]
+Assertion failed: claw_petti_nand_qe_policy((uint8_t)id,&qe)==known, file C:\code\esp32\petti-ui\host\driver_math_test.c, line 30
+
+exit_code=3221226505

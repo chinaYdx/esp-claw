@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\boards\\petti\\petti_mosaico", "C:\\code\\esp32\\petti-ui\\host\\hardware_policy_test.c", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\unknown_revision.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\unknown_revision.exe"]
+Assertion failed: !petti_hw_revision((uint16_t)v,&old), file C:\code\esp32\petti-ui\host\hardware_policy_test.c, line 10
+
+exit_code=3221226505

@@ -1,0 +1,9 @@
+version: "0.1.0"
+description: "Petti C hardware backends extracted from ESP-Claw; no Lua runtime"
+license: "Apache-2.0"
+dependencies:
+  espressif/esp_codec_dev: "~1.6"
+  espressif2022/bmi270: "^1.1.0~2"
+  tangyumei3535/bmm150_sensorapi: "^1.0.0"
+  espressif/bq27220: "^0.1.1~1"
+  espressif/spi_nand_flash: "^1.3.0"

@@ -1,0 +1,212 @@
+{
+  "electrical_checks": [
+    {
+      "bsp_macro": "BSP_POWER_VCC_3V3_CTRL",
+      "value": 60
+    },
+    {
+      "bsp_macro": "BSP_POWER_VCC_3V3_ON_LEVEL",
+      "value": 0
+    },
+    {
+      "bsp_macro": "BSP_POWER_CODEC_3V3_CTRL_V1_0",
+      "value": 56
+    },
+    {
+      "bsp_macro": "BSP_POWER_CODEC_3V3_ON_LEVEL",
+      "value": 1
+    },
+    {
+      "bsp_macro": "BSP_POWER_SWITCH_GPIO",
+      "value": 57
+    },
+    {
+      "bsp_macro": "BSP_POWER_SWITCH_RELEASE_LEVEL",
+      "value": 1
+    },
+    {
+      "bsp_macro": "BSP_I2C_SDA_V1_0",
+      "value": 0
+    },
+    {
+      "bsp_macro": "BSP_I2C_SCL_V1_0",
+      "value": 1
+    },
+    {
+      "bsp_macro": "BSP_I2C_SDA_V1_2",
+      "value": 56
+    },
+    {
+      "bsp_macro": "BSP_I2C_SCL_V1_2",
+      "value": 3
+    },
+    {
+      "bsp_macro": "BSP_LCD_RST_V1_0",
+      "value": 42
+    },
+    {
+      "bsp_macro": "BSP_LCD_SCL_V1_0",
+      "value": 44
+    },
+    {
+      "bsp_macro": "BSP_LCD_RST_V1_2",
+      "value": 44
+    },
+    {
+      "bsp_macro": "BSP_LCD_SCL_V1_2",
+      "value": 42
+    },
+    {
+      "bsp_macro": "BSP_LCD_CS",
+      "value": 50
+    },
+    {
+      "bsp_macro": "BSP_SENSOR_INT",
+      "value": 2
+    },
+    {
+      "bsp_macro": "BSP_LCD_DATA0",
+      "value": 36
+    },
+    {
+      "bsp_macro": "BSP_LCD_DATA1",
+      "value": 51
+    },
+    {
+      "bsp_macro": "BSP_LCD_DATA2",
+      "value": 35
+    },
+    {
+      "bsp_macro": "BSP_LCD_DATA3",
+      "value": 9
+    },
+    {
+      "bsp_macro": "BSP_LCD_CS",
+      "value": 50
+    },
+    {
+      "bsp_macro": "BSP_LCD_TOUCH_INT",
+      "value": 6
+    },
+    {
+      "bsp_macro": "BSP_LCD_TOUCH_RST",
+      "value": -1
+    },
+    {
+      "bsp_macro": "BSP_IMU_I2C_ADDR",
+      "value": 105
+    },
+    {
+      "bsp_macro": "BSP_BMM150_ADDR_0",
+      "value": 17
+    },
+    {
+      "bsp_macro": "BSP_BMM150_ADDR_1",
+      "value": 18
+    },
+    {
+      "bsp_macro": "BSP_BATTERY_I2C_ADDR",
+      "value": 85
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_CODEC_I2C_ADDR",
+      "value": 50
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_CODEC_I2C_ADDR",
+      "value": 50
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_PA_CTRL",
+      "value": 45
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_I2S_MCLK",
+      "value": 54
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_I2S_SCLK",
+      "value": 37
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_I2S_LRCLK",
+      "value": 49
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_I2S_SDOUT",
+      "value": 52
+    },
+    {
+      "bsp_macro": "BSP_AUDIO_I2S_DSIN",
+      "value": 40
+    },
+    {
+      "bsp_macro": "BSP_MOTOR_GPIO",
+      "value": 8
+    },
+    {
+      "bsp_macro": "BSP_LED_STATUS_GPIO_V1_0",
+      "value": 3
+    },
+    {
+      "bsp_macro": "BSP_LED_ON_LEVEL",
+      "value": 0
+    },
+    {
+      "bsp_macro": "BSP_LED_OFF_LEVEL",
+      "value": 1
+    },
+    {
+      "bsp_macro": "BSP_BUTTON_AI_GPIO",
+      "value": 7
+    },
+    {
+      "bsp_macro": "BSP_BUTTON_ACTIVE_LEVEL",
+      "value": 0
+    },
+    {
+      "bsp_macro": "BSP_BUTTON_BOOT_GPIO",
+      "value": 61
+    },
+    {
+      "bsp_macro": "BSP_BUTTON_ACTIVE_LEVEL",
+      "value": 0
+    },
+    {
+      "bsp_macro": "BSP_NAND_SPI_HOST",
+      "value": 2
+    },
+    {
+      "bsp_macro": "BSP_NAND_CLK",
+      "value": 20
+    },
+    {
+      "bsp_macro": "BSP_NAND_D",
+      "value": 21
+    },
+    {
+      "bsp_macro": "BSP_NAND_Q",
+      "value": 22
+    },
+    {
+      "bsp_macro": "BSP_NAND_WP",
+      "value": 25
+    },
+    {
+      "bsp_macro": "BSP_NAND_HOLD",
+      "value": 24
+    },
+    {
+      "bsp_macro": "BSP_NAND_CS",
+      "value": 23
+    }
+  ],
+  "pin_address_matches": 50,
+  "devices": 14,
+  "peripherals": 6,
+  "compiled_sources": 2297,
+  "bsp_symbols": 0,
+  "lua_symbols": 0,
+  "manager_startup_calls": 1,
+  "board_access": false
+}

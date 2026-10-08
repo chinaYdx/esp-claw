@@ -1,0 +1,10 @@
+{
+  "pin_address_matches": 50,
+  "devices": 14,
+  "peripherals": 6,
+  "compiled_sources": 2297,
+  "bsp_symbols": 0,
+  "lua_symbols": 0,
+  "manager_startup_calls": 1,
+  "board_access": false
+}

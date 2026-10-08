@@ -1,0 +1,38 @@
+[
+  {
+    "name": "baseline",
+    "exit_code": 0,
+    "expected": "green"
+  },
+  {
+    "name": "unknown_revision",
+    "exit_code": 3221226505,
+    "expected": "red"
+  },
+  {
+    "name": "reset_adopted_rail",
+    "exit_code": 3221226505,
+    "expected": "red"
+  },
+  {
+    "name": "motor_forced_full",
+    "exit_code": 3221226505,
+    "expected": "red"
+  },
+  {
+    "name": "wrong_qspi_alignment",
+    "exit_code": 3221226505,
+    "expected": "red"
+  },
+  {
+    "name": "restored",
+    "exit_code": 0,
+    "expected": "green"
+  }
+]
+{"name": "driver_baseline", "exit_code": 0, "expected": "green"}
+{"name": "imu_wrong_range", "exit_code": 3221226505, "expected": "red"}
+{"name": "battery_accept_invalid_soc", "exit_code": 3221226505, "expected": "red"}
+{"name": "battery_zero_is_charging", "exit_code": 3221226505, "expected": "red"}
+{"name": "nand_unknown_allowed", "exit_code": 3221226505, "expected": "red"}
+{"name": "driver_restored", "exit_code": 0, "expected": "green"}

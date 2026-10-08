@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\boards\\petti\\petti_mosaico", "C:\\code\\esp32\\petti-ui\\host\\hardware_policy_test.c", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\restored.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\restored.exe"]
+U9_POLICY PASS revisions=65536 adoption=8 motor=202 area_pairs=123753
+
+exit_code=0

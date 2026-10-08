@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\battery_accept_invalid_soc", "C:\\code\\esp32\\petti-ui\\host\\driver_math_test.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\battery_accept_invalid_soc.exe"]
+Assertion failed: !claw_petti_battery_decode(soc,current,&percent,&charging), file C:\code\esp32\petti-ui\host\driver_math_test.c, line 25
+
+exit_code=3221226505

@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\battery_zero_is_charging", "C:\\code\\esp32\\petti-ui\\host\\driver_math_test.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\battery_zero_is_charging.exe"]
+Assertion failed: percent==p&&charging==(currents[i]>0), file C:\code\esp32\petti-ui\host\driver_math_test.c, line 21
+
+exit_code=3221226505

@@ -1,0 +1,14 @@
+{
+  "ticket": "U9",
+  "bin_bytes": 2111728,
+  "maximum_bytes": 4194304,
+  "remaining_bytes": 2082576,
+  "sha256": "0761583abbdd4cb1bcea2ea49c708733a3c433932e6b7dcb3ac81411dfe2dcd8",
+  "idf_commit": "048ec57f228afe2d720542431b849cc10c949a15",
+  "micropython_commit": "0fd6c573ea815774668bbb16b8e197c8822368b2",
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "partition_table": "partitions-devboard-4m.csv",
+  "board_access": false,
+  "host_exe_bytes": 2737230,
+  "host_exe_sha256": "943004463a102966dbb6ad67bea51e7e0c4a6d3e4523fbd1d13493fe6f29bc53"
+}

@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\driver_restored", "C:\\code\\esp32\\petti-ui\\host\\driver_math_test.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\driver_restored.exe"]
+U9_DRIVER_MATH PASS raw_samples=65536 battery_valid=707 battery_invalid=65435 nand_ids=256
+
+exit_code=0

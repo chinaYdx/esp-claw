@@ -1,0 +1,4 @@
+["C:\\Strawberry\\c\\bin\\gcc.exe", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\imu_wrong_range", "C:\\code\\esp32\\petti-ui\\host\\driver_math_test.c", "-o", "C:\\code\\esp32\\petti-ui\\build\\U9-policy-mutations\\imu_wrong_range.exe"]
+Assertion failed: claw_petti_accel_g(-32768)==-4.0f, file C:\code\esp32\petti-ui\host\driver_math_test.c, line 7
+
+exit_code=3221226505
