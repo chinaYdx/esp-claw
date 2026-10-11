@@ -177,6 +177,9 @@ esp_err_t claw_petti_mag_read(claw_petti_mag_handle_t h, float xyz[3])
     struct bmm150_mag_data data = {0};
     if (bmm150_read_mag_data(&data, &h->dev) != BMM150_OK)
         return ESP_FAIL;
+    if (data.x == BMM150_OVERFLOW_OUTPUT || data.y == BMM150_OVERFLOW_OUTPUT ||
+        data.z == BMM150_OVERFLOW_OUTPUT)
+        return ESP_FAIL;
     xyz[0] = data.x;
     xyz[1] = data.y;
     xyz[2] = data.z;
