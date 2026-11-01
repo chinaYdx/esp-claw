@@ -50,6 +50,24 @@
 #include "cap_lua.h"
 #endif
 
+#if CONFIG_APP_CLAW_CAP_CORE
+/* Non-Petti applications keep the original optional-context behavior. Petti
+ * supplies the strong per-request implementation from its configuration owner. */
+__attribute__((weak)) esp_err_t app_claw_persona_context_collect(
+    const claw_core_request_t *request, claw_core_context_t *out, void *ctx)
+{
+    (void)request;
+    (void)out;
+    (void)ctx;
+    return ESP_ERR_NOT_FOUND;
+}
+static const claw_core_context_provider_t app_persona_provider = {
+    .name = "Petti selected persona",
+    .collect = app_claw_persona_context_collect,
+    .user_ctx = NULL,
+    .flags = CLAW_CORE_CONTEXT_PROVIDER_FLAG_REQUEST_START_ONLY,
+};
+#endif
 static const char *TAG = "app_claw";
 #if CONFIG_APP_CLAW_CAP_EVENT_ROUTER
 static const char *APP_STARTUP_EVENT_SOURCE_CAP = "app_claw";
@@ -801,6 +819,7 @@ esp_err_t app_claw_start(const app_claw_config_t *config)
 #endif
             claw_memory_session_history_provider,
             claw_skill_skills_list_provider,
+            app_persona_provider,
         };
         const char *root_agent_id = NULL;
 

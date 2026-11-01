@@ -88,6 +88,10 @@ typedef struct {
     claw_event_router_config_t config;
     claw_event_router_pending_t pending[CLAW_EVENT_ROUTER_PENDING_TABLE_SIZE];
     size_t pending_dropped;
+    /* Only the router worker uses these buffers. Keep queued payload ownership
+     * on the existing clone/free path, without reserving them on every stack. */
+    claw_event_t worker_event;
+    claw_event_router_result_t worker_result;
 } claw_event_router_runtime_t;
 
 static claw_event_router_runtime_t *s_runtime = NULL;
@@ -2078,6 +2082,9 @@ static esp_err_t claw_event_router_execute_action(const claw_event_router_rule_t
 static esp_err_t claw_event_router_run_default_agent(const claw_event_t *event,
                                                      claw_event_router_result_t *result)
 {
+    static const claw_event_router_rule_t default_rule = {
+        .id = "__default_agent__",
+    };
     claw_event_router_action_t action = {
         .kind = CLAW_EVENT_ROUTER_ACTION_RUN_AGENT,
         .input_json = strdup("{}"),
@@ -2093,13 +2100,11 @@ static esp_err_t claw_event_router_run_default_agent(const claw_event_t *event,
         return ESP_ERR_NO_MEM;
     }
 
-    err = claw_event_router_execute_agent_action(&(claw_event_router_rule_t) {
-        .id = "__default_agent__",
-    },
-    &action,
-    event,
-    ctx,
-    result);
+    err = claw_event_router_execute_agent_action(&default_rule,
+                                                 &action,
+                                                 event,
+                                                 ctx,
+                                                 result);
     cJSON_Delete(ctx);
     free(action.input_json);
     return err;
@@ -2263,28 +2268,30 @@ static esp_err_t claw_event_router_process_event(const claw_event_t *event,
 static void claw_event_router_task(void *arg)
 {
     (void)arg;
+    claw_event_t *const event = &s_runtime->worker_event;
+    claw_event_router_result_t *const result = &s_runtime->worker_result;
 
     ESP_LOGI(TAG, "event router task started");
 
     while (!s_runtime->stop_requested) {
-        claw_event_t event = {0};
-        claw_event_router_result_t result = {0};
+        memset(event, 0, sizeof(*event));
+        memset(result, 0, sizeof(*result));
 
-        if (xQueueReceive(s_runtime->event_queue, &event, pdMS_TO_TICKS(250)) != pdTRUE) {
+        if (xQueueReceive(s_runtime->event_queue, event, pdMS_TO_TICKS(250)) != pdTRUE) {
             continue;
         }
-        if (pending_take_for_event_id(event.event_id)) {
+        if (pending_take_for_event_id(event->event_id)) {
             ESP_LOGI(TAG, "Skipping cancelled event %s (type=%s, source=%s)",
-                     event.event_id,
-                     event.event_type[0] ? event.event_type : "(none)",
-                     event.source_cap[0] ? event.source_cap : "(none)");
-            claw_event_free(&event);
+                     event->event_id,
+                     event->event_type[0] ? event->event_type : "(none)",
+                     event->source_cap[0] ? event->source_cap : "(none)");
+            claw_event_free(event);
             continue;
         }
-        if (claw_event_router_process_event(&event, &result) != ESP_OK) {
-            ESP_LOGW(TAG, "Failed to process event %s", event.event_id);
+        if (claw_event_router_process_event(event, result) != ESP_OK) {
+            ESP_LOGW(TAG, "Failed to process event %s", event->event_id);
         }
-        claw_event_free(&event);
+        claw_event_free(event);
     }
 
     s_runtime->task_handle = NULL;

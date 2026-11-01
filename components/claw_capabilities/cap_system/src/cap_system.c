@@ -73,11 +73,13 @@ static esp_err_t cap_system_ensure_time_mutex(void)
     return s_time_mutex ? ESP_OK : ESP_ERR_NO_MEM;
 }
 
+#if !CONFIG_APP_CLAW_PETTI
 static void cap_system_time_sync_notification_cb(struct timeval *tv)
 {
     (void)tv;
     ESP_LOGI(TAG, "SNTP time synchronization event received");
 }
+#endif
 
 static esp_err_t cap_system_format_current_time(char *output, size_t output_size)
 {
@@ -111,6 +113,7 @@ static esp_err_t cap_system_sync_with_sntp(char *output, size_t output_size)
     esp_err_t err = ESP_OK;
     esp_err_t wait_err = ESP_OK;
     int retry = 0;
+#if !CONFIG_APP_CLAW_PETTI
 #if CONFIG_LWIP_SNTP_MAX_SERVERS > 1
     esp_sntp_config_t config = ESP_NETIF_SNTP_DEFAULT_CONFIG_MULTIPLE(
         2,
@@ -119,18 +122,23 @@ static esp_err_t cap_system_sync_with_sntp(char *output, size_t output_size)
 #else
     esp_sntp_config_t config = ESP_NETIF_SNTP_DEFAULT_CONFIG(CAP_SYSTEM_SNTP_PRIMARY_SERVER);
 #endif
+#endif
 
     if (!output || output_size == 0) {
         ESP_LOGE(TAG, "sync with sntp: invalid arg");
         return ESP_ERR_INVALID_ARG;
     }
 
+#if !CONFIG_APP_CLAW_PETTI
     config.sync_cb = cap_system_time_sync_notification_cb;
     err = esp_netif_sntp_init(&config);
     if (err != ESP_OK) {
         ESP_LOGE(TAG, "sync with sntp init failed: %s", esp_err_to_name(err));
         return err;
     }
+#endif
+    /* Petti's platform owns SNTP for the full network lifetime. This capability
+     * only waits for that shared clock; it must not reconfigure or destroy it. */
 
     while ((wait_err = esp_netif_sntp_sync_wait(pdMS_TO_TICKS(CAP_SYSTEM_SNTP_WAIT_MS))) == ESP_ERR_TIMEOUT &&
            ++retry < CAP_SYSTEM_SNTP_RETRY_COUNT) {
@@ -149,7 +157,9 @@ static esp_err_t cap_system_sync_with_sntp(char *output, size_t output_size)
     }
 
 done:
+#if !CONFIG_APP_CLAW_PETTI
     esp_netif_sntp_deinit();
+#endif
     return err;
 }
 

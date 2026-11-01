@@ -665,7 +665,7 @@ esp_err_t read_file_dup(const char *path, char **out_buf)
 
     file = fopen(path, "rb");
     if (!file) {
-        return ESP_ERR_NOT_FOUND;
+        return errno == ENOENT ? ESP_ERR_NOT_FOUND : ESP_FAIL;
     }
     if (fseek(file, 0, SEEK_END) != 0) {
         fclose(file);
@@ -684,7 +684,12 @@ esp_err_t read_file_dup(const char *path, char **out_buf)
     }
 
     read_bytes = fread(buf, 1, (size_t)size, file);
-    fclose(file);
+    bool read_failed = ferror(file) || read_bytes != (size_t)size;
+    int close_result = fclose(file);
+    if (read_failed || close_result != 0) {
+        free(buf);
+        return ESP_FAIL;
+    }
     buf[read_bytes] = '\0';
     *out_buf = buf;
     return ESP_OK;

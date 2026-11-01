@@ -13,6 +13,9 @@
 
 #include "llm/claw_llm_http_transport.h"
 #include "llm/media/claw_media_pipeline.h"
+#if CONFIG_APP_CLAW_PETTI && CONFIG_PETTI_SIM_INPUT
+#include "esp_log.h"
+#endif
 
 typedef struct {
     char *api_key;
@@ -197,6 +200,20 @@ static esp_err_t parse_chat_response(const char *body,
     }
 
     if (!out_response->text && out_response->tool_call_count == 0) {
+#if CONFIG_APP_CLAW_PETTI && CONFIG_PETTI_SIM_INPUT
+        cJSON *finish = cJSON_GetObjectItem(choice0, "finish_reason");
+        const char *why = cJSON_GetStringValue(finish);
+        /* Numeric classification only. Never log response data or reasoning. */
+        unsigned finish_kind = !why ? 0 : !strcmp(why,"stop") ? 1 :
+            !strcmp(why,"length") ? 2 : !strcmp(why,"tool_calls") ? 3 :
+            !strcmp(why,"content_filter") ? 4 :
+            !strcmp(why,"insufficient_system_resource") ? 5 :
+            !strcmp(why,"aborted") ? 6 : 7;
+        ESP_LOGW("petti_llm", "empty_reply finish=%u content_string=%u reasoning_bytes=%u",
+                 finish_kind, (unsigned)cJSON_IsString(content),
+                 (unsigned)(out_response->reasoning_content ?
+                            strlen(out_response->reasoning_content) : 0));
+#endif
         cJSON_Delete(root);
         *out_error_message = dup_printf("LLM returned empty text response");
         return ESP_FAIL;
@@ -250,6 +267,24 @@ static esp_err_t build_chat_body(const openai_compatible_backend_ctx_t *ctx,
 
     cJSON_AddItemToObject(body, "messages", messages);
     messages = NULL;
+
+#if CONFIG_APP_CLAW_PETTI
+    /* Petti's bounded, short spoken replies use non-thinking mode explicitly.
+     * DeepSeek Flash otherwise defaults to thinking; do not change other
+     * models/endpoints or silently extend the configured token/time budget. */
+    if (!strcmp(ctx->model, "deepseek-flash") &&
+        (!strcmp(ctx->base_url, "https://api.deepseek.com") ||
+         !strcmp(ctx->base_url, "https://api.deepseek.com/") ||
+         !strcmp(ctx->base_url, "https://api.deepseek.com/v1") ||
+         !strcmp(ctx->base_url, "https://api.deepseek.com/v1/"))) {
+        cJSON *thinking = cJSON_AddObjectToObject(body, "thinking");
+        if (!thinking || !cJSON_AddStringToObject(thinking, "type", "disabled")) {
+            cJSON_Delete(body);
+            *out_error_message = dup_printf("Out of memory setting reply mode");
+            return ESP_ERR_NO_MEM;
+        }
+    }
+#endif
 
     if (request->tools_json && request->tools_json[0]) {
         if (!profile->supports_tools) {

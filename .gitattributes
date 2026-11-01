@@ -1,0 +1,2 @@
+# Store C sources with consistent line endings without rewriting local files.
+*.c text eol=lf

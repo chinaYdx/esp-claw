@@ -17,6 +17,13 @@ static const char *TAG = "claw_task";
 
 /* Entries in this table override the config passed by the caller. Keep a trailing sentinel so the table can be left effectively empty. */
 static const claw_task_config_t s_task_configs[] = {
+#if defined(CONFIG_APP_CLAW_PETTI) && CONFIG_APP_CLAW_PETTI
+    /* The 8KiB memory worker overflowed in the shared HTTPS path. Match
+     * the main agent's existing 16KiB HTTPS stack; keep scheduling policy. */
+    {.name = "claw_mem_extract", .stack_size = 16 * 1024,
+     .priority = 5, .core_id = tskNO_AFFINITY,
+     .stack_policy = CLAW_TASK_STACK_PREFER_PSRAM},
+#endif
     {0},
 };
 

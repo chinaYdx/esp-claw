@@ -14,6 +14,28 @@
 #include "esp_http_client.h"
 #include "esp_log.h"
 
+#if defined(CONFIG_APP_CLAW_PETTI) && CONFIG_APP_CLAW_PETTI && \
+    defined(CONFIG_PETTI_SIM_INPUT) && CONFIG_PETTI_SIM_INPUT
+extern void petti_boot_memory_stage(const char *stage);
+#define HTTP_MEMORY_STAGE(stage) petti_boot_memory_stage(stage)
+#else
+#define HTTP_MEMORY_STAGE(stage) ((void)0)
+#endif
+
+/* Request/response text is CPU-only payload. Petti keeps it out of the
+ * internal DMA-capable heap used by Wi-Fi; the SDK client/driver owns its
+ * transport buffers separately. Generic targets keep their original allocator. */
+#if defined(CONFIG_APP_CLAW_PETTI) && CONFIG_APP_CLAW_PETTI
+#include "esp_heap_caps.h"
+#define HTTP_PAYLOAD_CALLOC(count, bytes) \
+    heap_caps_calloc((count), (bytes), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT)
+#define HTTP_PAYLOAD_REALLOC(pointer, bytes) \
+    heap_caps_realloc((pointer), (bytes), MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT)
+#else
+#define HTTP_PAYLOAD_CALLOC(count, bytes) calloc((count), (bytes))
+#define HTTP_PAYLOAD_REALLOC(pointer, bytes) realloc((pointer), (bytes))
+#endif
+
 static const char *TAG = "llm_http";
 
 #define CLAW_LLM_HTTP_RB_INITIAL_CAP 4096
@@ -73,7 +95,7 @@ static char *sanitize_utf8_body_copy(const char *body)
     }
 
     len = strlen(body);
-    sanitized = calloc(1, len + 1);
+    sanitized = HTTP_PAYLOAD_CALLOC(1, len + 1);
     if (!sanitized) {
         return NULL;
     }
@@ -131,7 +153,7 @@ static esp_err_t response_buffer_init(response_buffer_t *buffer)
         return ESP_ERR_INVALID_ARG;
     }
 
-    buffer->data = calloc(1, CLAW_LLM_HTTP_RB_INITIAL_CAP);
+    buffer->data = HTTP_PAYLOAD_CALLOC(1, CLAW_LLM_HTTP_RB_INITIAL_CAP);
     if (!buffer->data) {
         return ESP_ERR_NO_MEM;
     }
@@ -156,7 +178,7 @@ static esp_err_t response_buffer_append(response_buffer_t *buffer, const char *d
     }
 
     if (cap != buffer->cap) {
-        grown = realloc(buffer->data, cap);
+        grown = HTTP_PAYLOAD_REALLOC(buffer->data, cap);
         if (!grown) {
             return ESP_ERR_NO_MEM;
         }
@@ -250,6 +272,7 @@ esp_err_t claw_llm_http_post_json(const claw_llm_http_json_request_t *request,
         return ESP_ERR_INVALID_ARG;
     }
 
+    HTTP_MEMORY_STAGE("llm_http_begin");
     sanitized_body = sanitize_utf8_body_copy(request->body);
     if (!sanitized_body) {
         *out_error_message = dup_printf("Out of memory sanitizing HTTP request body");
@@ -264,6 +287,7 @@ esp_err_t claw_llm_http_post_json(const claw_llm_http_json_request_t *request,
         goto cleanup;
     }
 
+    HTTP_MEMORY_STAGE("llm_http_buffers");
     request_ctx.buffer = &buffer;
     request_ctx.abort_flag = request->abort_flag;
     config.url = request->url;
@@ -289,6 +313,7 @@ esp_err_t claw_llm_http_post_json(const claw_llm_http_json_request_t *request,
         goto cleanup;
     }
 
+    HTTP_MEMORY_STAGE("llm_http_client");
     esp_http_client_set_method(client, HTTP_METHOD_POST);
     esp_http_client_set_header(client, "Content-Type", "application/json");
     auth_header_value = build_auth_header_value(request->auth_type, request->api_key);
@@ -310,7 +335,9 @@ esp_err_t claw_llm_http_post_json(const claw_llm_http_json_request_t *request,
     esp_http_client_set_post_field(client, sanitized_body, (int)strlen(sanitized_body));
 
     ESP_LOGD(TAG, "POST %s", request->url);
+    HTTP_MEMORY_STAGE("llm_http_perform");
     err = esp_http_client_perform(client);
+    HTTP_MEMORY_STAGE("llm_http_return");
     if (err != ESP_OK) {
         if (abort_requested(&request_ctx)) {
             *out_error_message = dup_printf("HTTP request aborted by caller");

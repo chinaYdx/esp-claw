@@ -105,8 +105,14 @@ static esp_err_t claw_memory_profile_collect(const claw_core_request_t *request,
     }
     memset(out_context, 0, sizeof(*out_context));
     for (i = 0; i < 3; i++) {
-        if (claw_memory_profile_dup_nonempty(paths[i], &parts[i]) == ESP_OK) {
+        esp_err_t err = claw_memory_profile_dup_nonempty(paths[i], &parts[i]);
+        if (err == ESP_OK) {
             total_len += strlen(titles[i]) + strlen(paths[i]) + strlen(parts[i]) + 12;
+        } else if (err != ESP_ERR_NOT_FOUND) {
+            for (size_t j = 0; j < 3; j++) {
+                free(parts[j]);
+            }
+            return err;
         }
     }
 
