@@ -11,7 +11,7 @@ Petti 从同级 ESP-IDF 工程编译此组件。不构建 edge_agent 应用、ca
 | BMI270 | `lua_modules/lua_module_imu/src/bmi270/bmi270_backend.c` | C 实例借用 IDF I2C 总线和 Bosch SensorAPI，支持0x69；保留Petti 50Hz、±4g、±2000deg/s |
 | BMM150 | `lua_modules/lua_module_magnetometer/src/bmm150/bmm150_backend.c` | 两个固定地址实例；上电/trim/forced采样；等待新DRDY，200ms超时；不扫描替代地址 |
 | 音频 | `lua_modules/lua_module_audio/src/audio_device.c` | 去Lua后提取codec open/level/PCM流程；借用manager TX/RX；保留Mosaico ES8311参数和增益 |
-| BQ27220 | 上游无后端；Mosaico BSP电池profile | 保留80mAh CEDV和seal；SOC/current带错误返回的读取，避免IO错误被当成零 |
+| BQ27220 | 上游无后端；Mosaico BSP电池profile | 保留80mAh CEDV和seal；SOC/current带错误返回的读取，避免IO错误被当成零；默认unseal密钥被拒（网关仍SEALED）时不写profile、不改安全状态，改用只读标准命令继续读SOC/current并记一条WARN；网关无应答或电压不在2000–5000mV视为无电池 |
 | SPI NAND | 上游无后端；Mosaico BSP NAND时序 | SIO读取manufacturer/QE后切QIO；拒绝未知厂商；无VFS和显式格式化/擦除 |
 
 组件不会创建共享I2C/I2S总线。传感器、codec和gauge实例只拥有各自device/interface；NAND实例拥有独立SPI3的bootstrap/QIO总线。delete函数释放实例资源。Petti board manager拥有生命周期，应用启动/退出不能重建物理硬件。

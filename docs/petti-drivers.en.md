@@ -11,7 +11,7 @@ Petti builds this component from its sibling ESP-IDF project. It does not build 
 | BMI270 | `lua_modules/lua_module_imu/src/bmi270/bmi270_backend.c` | C instance using a borrowed IDF I2C bus and Bosch SensorAPI, including address 0x69; preserve Petti 50Hz, ±4g, ±2000deg/s |
 | BMM150 | `lua_modules/lua_module_magnetometer/src/bmm150/bmm150_backend.c` | Two fixed-address instances; power/trim/forced sampling; wait for fresh DRDY with a 200ms bound; no alternate-address scanning |
 | Audio | `lua_modules/lua_module_audio/src/audio_device.c` | Extract codec open/level/PCM flow without Lua; borrow manager TX/RX; preserve Mosaico ES8311 parameters and gain |
-| BQ27220 | No upstream backend; Mosaico BSP battery profile | Preserve 80mAh CEDV and seal; checked SOC/current reads avoid swallowed IO errors being reported as zero |
+| BQ27220 | No upstream backend; Mosaico BSP battery profile | Preserve 80mAh CEDV and seal; checked SOC/current reads avoid swallowed IO errors being reported as zero. If the gauge refuses the default unseal keys (stays SEALED) the profile is not written and the security state is untouched; SOC/current are read from the standard commands (read-only) with one WARN. No answer, or a voltage outside 2000-5000 mV, means no battery |
 | SPI NAND | No upstream backend; Mosaico BSP NAND sequence | SIO manufacturer/QE bootstrap followed by QIO; unknown manufacturers rejected; no VFS or explicit formatting/erase |
 
 The component never creates shared I2C/I2S buses. Sensor, codec and gauge instances own only their devices/interfaces; the NAND instance owns its dedicated SPI3 bootstrap/QIO bus. Delete functions release instance resources. Board manager in Petti owns the lifetime, and application start/stop must not recreate physical hardware.
