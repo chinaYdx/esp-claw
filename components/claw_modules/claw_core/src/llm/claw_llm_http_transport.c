@@ -206,6 +206,9 @@ static esp_err_t http_event_handler(esp_http_client_event_t *evt)
 {
     http_request_context_t *ctx = (http_request_context_t *)evt->user_data;
 
+    if (!ctx) {
+        return ESP_OK;
+    }
     if (abort_requested(ctx)) {
         return ESP_FAIL;
     }
@@ -374,6 +377,10 @@ cleanup:
     free(auth_header_value);
     free(sanitized_body);
     if (client) {
+        /* request_ctx is on this stack frame; with http_reuse the handle outlives this call in the pool
+         * and is closed later from another task, so it must not keep the handler or the pointer. */
+        esp_http_client_set_event_handler(client, NULL);
+        esp_http_client_set_user_data(client, NULL);
         esp_http_client_cleanup(client);
     }
     response_buffer_free(&buffer);

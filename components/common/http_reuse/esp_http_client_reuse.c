@@ -270,12 +270,32 @@ static size_t pool_count_locked(void)
     return n;
 }
 
+/*
+ * An idle pooled client must not keep anything of the request that leased it: the event handler and
+ * user_data point into that caller (often its stack frame, e.g. claw_llm_http_post_json request_ctx),
+ * and the POST body is the caller's buffer, freed after cleanup. The idle reaper (timer task), the LRU
+ * eviction, the errno drop and a failed reuse later destroy the client from another context, and
+ * esp_http_client_close() then dispatches HTTP_EVENT_DISCONNECTED to whatever handler is still set:
+ * a stale handler reads a dead user_data pointer (load access fault). Called while the caller of
+ * esp_http_client_cleanup() is still inside that call, before the client becomes visible as idle.
+ */
+static void client_drop_request_state(esp_http_client_handle_t client)
+{
+    (void)esp_http_client_set_event_handler(client, NULL);
+    (void)esp_http_client_set_user_data(client, NULL);
+    (void)esp_http_client_set_post_field(client, NULL, 0);
+}
+
 static void node_free(http_reuse_node_t *node, bool destroy_client)
 {
     if (!node) {
         return;
     }
     if (destroy_client && node->client) {
+        if (!node->leased) {
+            /* Idle: nobody owns the request callbacks any more (second line of defence). */
+            client_drop_request_state(node->client);
+        }
         __real_esp_http_client_cleanup(node->client);
     }
     endpoint_release(&node->endpoint);
@@ -667,6 +687,7 @@ esp_err_t __wrap_esp_http_client_cleanup(esp_http_client_handle_t client)
             node_free(node, true);
             return ESP_OK;
         }
+        client_drop_request_state(client); /* before the node turns idle (reaper-visible) */
         node->is_persistent           = true;
         node->leased                  = false; /* idle in pool for pool_take */
         node->reused_in_current_lease = false; /* lease ended */
@@ -700,6 +721,9 @@ esp_err_t __wrap_esp_http_client_cleanup(esp_http_client_handle_t client)
 
     pool_mutex_take();
     esp_err_t pin_err = pool_insert_locked(client, &ep, true, false);
+    if (pin_err == ESP_OK) {
+        client_drop_request_state(client); /* still under the mutex: the reaper cannot see it yet */
+    }
     pool_mutex_give();
     if (pin_err != ESP_OK) {
         ESP_LOGE(TAG, "pool insert persistent %p failed (%s), destroy", client, esp_err_to_name(pin_err));
